@@ -1,0 +1,98 @@
+.App {
+  background-color: white;
+  min-height: 100vh;
+  /* height: 100%; */
+  width: 100%;
+  
+  display: flex;
+
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+h1.WindowTitle{
+  margin-top: 0px;
+}
+h5{
+  margin:0px;
+  padding:0px;
+}
+h6{
+  margin:0px;
+  padding:0px;
+  color:grey;
+}
+p.timeLeft{
+  margin:0px;
+  padding:3px;
+  padding-right: 5px;
+  padding-top: 0px;
+  width:fit-content;
+  
+  font-size: 16px;
+  
+  background-color: pink;
+  color:red;
+}
+p.timeLeft::before{
+  content: "⏱"
+}
+.progress-bar{
+  background-color:#eeeeee;
+  height: 10px;
+}
+.progress-bar-fill{
+  background-color: limegreen;
+  height: 10px;
+  width: 50%;
+}
+
+.Dashboard{  
+  background-color: #eeeeee;
+  min-height: 100vh;
+  width: 100%;
+  
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.Border-dashed, .Border-regular{
+  /* float: left; */
+  overflow: hidden;
+  display: inline-block;
+  align-self:center;
+  width: 300px;
+  height: 150px;
+  max-width: 300px;
+  max-height: 150px;
+
+  margin: 10px;
+  border-radius: 15px;
+}
+
+.Border-regular{
+  border: 2px solid white;
+  background-color: white;
+  
+  color: black;
+}
+
+.Border-dashed{
+  border: 2px dashed grey;
+
+  color: black;
+}
+
+.Border-screen{
+  padding: 10px;
+  margin: 15px;
+
+  border: 2px solid grey;
+  border-radius: 15px;
+  
+  width: calc(100%-20px);
+  height: fit-content; 
+
+  align-content: space-around;
+}
+
