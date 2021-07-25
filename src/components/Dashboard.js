@@ -13,6 +13,15 @@ class Dashboard extends React.Component{
                 } type = 'regular'></Border>
             )
         }));
+        
+        
+        // return (Data.getAllProjects().map((data, i)=>{
+        //     return(
+        //         <Border key = {i} content = {
+        //             <Project data = {data}/>
+        //         } type = 'regular'></Border>
+        //     )
+        // }));
     }
     
     render(){

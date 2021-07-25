@@ -2,12 +2,14 @@
 
 export const getAllProjects = () => {
     var projectKeys = Object.entries(localStorage);
-    var projectsArray = [];
+    //var projectsArray = [];
     for(let i = 0; i < projectKeys.length; i++){
-        projectsArray.push(JSON.parse(projectKeys[i][1]));
+        //projectsArray.push(JSON.parse(projectKeys[i][1]));
+        projectKeys[i][1] = JSON.parse(projectKeys[i][1]);
     }
 
-    return projectsArray;
+    return projectKeys;
+    //return projectsArray;
     /*
     return(
         [
@@ -90,7 +92,16 @@ export const getAllProjects = () => {
         ]
     )*/
 }
+//works only for 1 deep field
+export const setFieldInProject = (projectKey, field, value) => {
+    let item = JSON.parse(localStorage.getItem(projectKey));
+    item[field] = value;
+    localStorage.setItem(projectKey, item);
+}
 
+export const setProject = (projectKey, value) => {
+    localStorage.setItem(projectKey, JSON.stringify(value));
+}
 
 
 /*
