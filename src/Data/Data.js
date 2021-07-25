@@ -1,6 +1,14 @@
 //TODO: literally everything
 
 export const getAllProjects = () => {
+    var projectKeys = Object.entries(localStorage);
+    var projectsArray = [];
+    for(let i = 0; i < projectKeys.length; i++){
+        projectsArray.push(JSON.parse(projectKeys[i][1]));
+    }
+
+    return projectsArray;
+    /*
     return(
         [
             {
@@ -42,6 +50,7 @@ export const getAllProjects = () => {
                     },
                     {
                         complete: false,
+                        
                         name: "Task Name 2",
                         date: "Date 2",
                     },
@@ -79,8 +88,11 @@ export const getAllProjects = () => {
                 comments: "props.data.comments",
             },
         ]
-    )
+    )*/
 }
+
+
+
 /*
 const changeData = () => {
 }

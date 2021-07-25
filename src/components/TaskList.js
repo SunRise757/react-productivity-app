@@ -6,10 +6,8 @@ import React from 'react';
 class TaskList extends React.Component{   
     constructor(props){
         super(props);
-        console.log('data = ' + props.data);
 
         if (props.data){
-            //if  (props.data.tasks)
             this.state = {
                 tasks: props.data,
                 persent: this.calculatePersent(props.data),
@@ -43,35 +41,24 @@ class TaskList extends React.Component{
     calculatePersent = (tasks) => {
         let nCompleted = 0;
         for(let j = 0; j < tasks.length; j++){
-            // console.log(task);
             if(tasks[j].complete) nCompleted++;
         }
 
-        //console.log('tasks completed: ' + nCompleted);
-        
         let persent = Math.round(100 * nCompleted / tasks.length) + '%';
 
-        
-        console.log(persent);
         return persent;
     }
 
     updatePersent = (i) => {
         let newTasks = this.state.tasks;
         newTasks[i].complete = !newTasks[i].complete ;
-        //console.log('task[i] = ' + newTasks[i]);
-       
+
         let nCompleted = 0;
         for(let j = 0; j < newTasks.length; j++){
-            // console.log(task);
             if(newTasks[j].complete) nCompleted++;
         }
-
-        console.log('tasks completed: ' + nCompleted);
-        
+ 
         let persent = Math.round(100 * nCompleted / newTasks.length) + '%';
-
-        console.log(persent);
 
         this.setState(
             {
@@ -85,7 +72,7 @@ class TaskList extends React.Component{
         return(
             this.state.tasks.map(
                 (taskData, i) => {
-                    console.log(i);
+                    //console.log(i);
                     return <Task data = {taskData} key = {i} onChange = {() => this.updatePersent(i)}></Task>        
                 }
             )

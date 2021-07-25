@@ -29,7 +29,7 @@ class Project extends React.Component{
     }
 
     render(){
-        console.log(this.state.tasks);
+        //console.log(this.state.tasks);
         switch(this.state.visibility){ 
             
             case 'full': return(

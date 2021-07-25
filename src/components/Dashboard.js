@@ -1,14 +1,12 @@
 import './App.css';
 import React from 'react';
 import Border from './Border.js';
-// import Team from './Team.js';/
 import Project from './Project.js';
 import * as Data from '../Data/Data.js'
 
 class Dashboard extends React.Component{   
     renderProjects = () => {
         return (Data.getAllProjects().map((data, i)=>{
-            console.log(data)
             return(
                 <Border key = {i} content = {
                     <Project data = {data}/>
