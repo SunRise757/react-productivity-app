@@ -2,47 +2,23 @@ import './App.css';
 import React from 'react';
 
 class Task extends React.Component{   
-    constructor(props){
-        super(props);
-        if (props.data){
 
-            if  (props.data.tasks)
-            this.state = {
-                tasks: props.data.tasks,
-            }
-        } else {
-            this.state = {
-                tasks: [
-                    {
-                        complete: true,
-                        name: "Task Name",
-                        date: "Date",
-                    },
-                    {
-                        complete: false,
-                        name: "Task Name",
-                        date: "Date",
-                    },
-                    {
-                        complete: false,
-                        name: "Task Name",
-                        date: "Date",
-                    }
-                ]
-            }
-
-        }
-        
-    }
-    
     render(){ 
         
         return(
-            <div class="progress-bar">
-                <div class = "progress-bar-fill" 
-                    style = {{width: this.props.value}}>
-                </div>
-
+            //<input type = 'checkbox'> kek </input>
+            <div>
+                <input type="checkbox" checked = {this.props.data.complete} onChange = {this.props.onChange}/>
+                <label style = {
+                    this.props.data.complete ?
+                    {
+                        'textDecoration': 'line-through',
+                    }:{}
+                }>
+                {this.props.data.name} {this.props.data.date}
+                </label>
+                
+                
             </div>
         )
     }

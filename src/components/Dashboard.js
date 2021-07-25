@@ -1,10 +1,22 @@
 import './App.css';
 import React from 'react';
 import Border from './Border.js';
-import Team from './Team.js';
+// import Team from './Team.js';/
 import Project from './Project.js';
+import * as Data from '../Data/Data.js'
 
 class Dashboard extends React.Component{   
+    renderProjects = () => {
+        return (Data.getAllProjects().map((data, i)=>{
+            console.log(data)
+            return(
+                <Border key = {i} content = {
+                    <Project data = {data}/>
+                } type = 'regular'></Border>
+            )
+        }));
+    }
+    
     render(){
         const projectData = {
             name: 'Project Name',
@@ -14,28 +26,30 @@ class Dashboard extends React.Component{
             tasks: 'Tasks',
             comments: 'Comments',
         }
-        
+
         return (
             <div className = 'Dashboard'>
                 <h1 className = 'WindowTitle'> Dashboard </h1>
                 <Border content = {
                     <div className = 'Borders'>
-                        <Border content = {
-                            <div>
+                        {/*
+                            <Border content = {
+                                <div>
                                 <Team name = 'TeamName'></Team>
-                            </div>
-                            
-                        } type = 'regular'></Border>
+                                </div>
+                                
+                            } type = 'regular'></Border>
+                        */
+                        }
 
-                        <Border content = {
-                            <Project data = {projectData}/>
-                        } type = 'regular'></Border>
+                        {/* test project 0
+                            <Border content = {
+                                <Project data = {projectData}/>
+                            } type = 'regular'></Border>
+                        */}
 
-                        <Border content = "Border" type = 'regular'></Border>
-                        <Border content = "Border" type = 'regular'></Border>
-                        <Border content = "Border" type = 'dashed'></Border>
-                        <Border content = "Border" type = 'dashed'></Border>
-                        <Border content = "Border" type = 'dashed'></Border>
+                        {this.renderProjects()}
+                        
                         <Border content = "Border" type = 'dashed'></Border>
                     </div>
                     } 

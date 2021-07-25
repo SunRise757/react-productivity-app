@@ -44,7 +44,7 @@ p.timeLeft::before{
 .progress-bar-fill{
   background-color: limegreen;
   height: 10px;
-  width: 50%;
+  /* width: 50%; */
 }
 
 .Dashboard{  
@@ -71,7 +71,7 @@ p.timeLeft::before{
 }
 
 .Border-regular{
-  border: 2px solid white;
+  border: 2px solid grey;
   background-color: white;
   
   color: black;
@@ -83,12 +83,13 @@ p.timeLeft::before{
   color: black;
 }
 
-.Border-screen{
+.Border-screen, .Border-overlay{
   padding: 10px;
   margin: 15px;
 
   border: 2px solid grey;
   border-radius: 15px;
+  background-color: white;
   
   width: calc(100%-20px);
   height: fit-content; 
@@ -96,3 +97,32 @@ p.timeLeft::before{
   align-content: space-around;
 }
 
+.Border-overlay{
+  width: stretch;
+  z-index: 2;
+}
+
+.Project-compact{
+  width: stretch;
+  height: stretch;
+}
+.Project-full{
+  width: stretch;
+  height: stretch;
+}
+
+
+.overlay-window{
+  display:initial;
+  position: fixed;
+  /* padding-left:20px;  */
+  padding-right:20px;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
+}

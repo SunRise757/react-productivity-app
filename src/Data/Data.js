@@ -1,6 +1,6 @@
 //TODO: literally everything
 
-const getAllProjects = () => {
+export const getAllProjects = () => {
     return(
         [
             {
@@ -12,18 +12,18 @@ const getAllProjects = () => {
                 tasks: [
                     {
                         complete: true,
-                        name: "Task Name",
-                        date: "Date",
+                        name: "Task Name 1",
+                        date: "Date 1",
                     },
                     {
                         complete: false,
-                        name: "Task Name",
-                        date: "Date",
+                        name: "Task Name 2",
+                        date: "Date 2",
                     },
                     {
                         complete: false,
-                        name: "Task Name",
-                        date: "Date",
+                        name: "Task Name 3",
+                        date: "Date 3",
                     }
                 ],
                 comments: "props.data.comments",
@@ -37,18 +37,18 @@ const getAllProjects = () => {
                 tasks: [
                     {
                         complete: true,
-                        name: "Task Name",
-                        date: "Date",
+                        name: "Task Name 1",
+                        date: "Date 1",
                     },
                     {
                         complete: false,
-                        name: "Task Name",
-                        date: "Date",
+                        name: "Task Name 2",
+                        date: "Date 2",
                     },
                     {
                         complete: false,
-                        name: "Task Name",
-                        date: "Date",
+                        name: "Task Name 3",
+                        date: "Date 3",
                     }
                 ],
                 comments: "props.data.comments",
@@ -62,18 +62,18 @@ const getAllProjects = () => {
                 tasks: [
                     {
                         complete: true,
-                        name: "Task Name",
-                        date: "Date",
+                        name: "Task Name 1",
+                        date: "Date 1",
                     },
                     {
                         complete: false,
-                        name: "Task Name",
-                        date: "Date",
+                        name: "Task Name 2",
+                        date: "Date 2",
                     },
                     {
                         complete: false,
-                        name: "Task Name",
-                        date: "Date",
+                        name: "Task Name 3",
+                        date: "Date 3",
                     }
                 ],
                 comments: "props.data.comments",
