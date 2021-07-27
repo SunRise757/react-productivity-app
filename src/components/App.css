@@ -126,3 +126,25 @@ p.timeLeft::before{
   background-color: rgb(0,0,0); 
   background-color: rgba(0,0,0,0.4);
 }
+
+.Project-description{
+  /* border-style: none; */
+  width: stretch;
+  /* height: fit-content;*/
+  /* height: stretch; */
+  /* min-height: 100px; */
+  /* resize: vertical; */
+  resize: none;
+  height: fit-content;
+  overflow: visible;
+  line-height: 20px;
+  font-size: 20px;
+
+  border-style: none;
+}
+
+.Project-name{
+  font-size: 24px;
+  border-style: none;
+  /* font-family: Tahoma;  */
+}

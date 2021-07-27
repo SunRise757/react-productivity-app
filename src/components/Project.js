@@ -17,6 +17,9 @@ class Project extends React.Component{
             tasks: props.data[1].tasks,
             comments: props.data[1].comments,
             visibility: props.type,
+            minRows: 5, 
+            maxRows: 15,
+            //descriptionRows: props.data[1].descriptionRows ? props.data[1].descriptionRows : 5.
         }
     }
 
@@ -40,11 +43,35 @@ class Project extends React.Component{
             name: e.target.value,
         })
     }
-
+    //autochange heigth
     onDescriptionChanged = (e) => {
-        this.setState({
-            description: e.target.value,
-        })
+        // console.log('scroll heigth = ' + e.target.rows)
+        // let k = e.target.scrollHeight/20;
+        // this.setState({
+        //     description: e.target.value,
+        //     descriptionRows: k,
+        // })
+        const textareaLineHeight = 20;
+		const { minRows, maxRows } = this.state;
+		
+		const previousRows = e.target.rows;
+  	    e.target.rows = minRows; // reset number of rows in textarea 
+		
+		const currentRows = ~~(e.target.scrollHeight / textareaLineHeight);
+    
+        if (currentRows === previousRows) {
+        	e.target.rows = currentRows;
+        }
+		
+		if (currentRows >= maxRows) {
+			e.target.rows = maxRows;
+			e.target.scrollTop = e.target.scrollHeight;
+		}
+    
+  	    this.setState({
+        	description: e.target.value,
+            descriptionRows: currentRows < maxRows ? currentRows : maxRows,
+        });
     }
 
     render(){
@@ -64,6 +91,7 @@ class Project extends React.Component{
                         //full project comp itself
                         <div className = "Project-full">
                             <h5><input 
+                                className = 'Project-name'
                                 value = {this.state.name} 
                                 onChange = {this.onNameChanged}
                                 //onBlur = {this.saveChanges}
@@ -72,13 +100,21 @@ class Project extends React.Component{
                             
                             <h6>{this.state.teamName}</h6>
                             <p className = 'timeLeft'>{this.state.timeLeft} </p>
-                            <p> {this.state.description} </p>
-                            <p><textarea 
-                                value = {this.state.description} 
-                                onChange = {this.onDescriptionChanged}
-                                //onBlur = {this.saveChanges}
-                            >
-                            </textarea></p>
+                            <input type = 'date'></input>
+                            <div className = 'Project-description'>
+                                <textarea 
+                                    rows = {this.state.descriptionRows? this.state.descriptionRows : 5}
+                                    className = 'Project-description'
+                                    value = {this.state.description} 
+                                    onChange = {(e)=>{
+                                        this.onDescriptionChanged(e);
+                                        //e.target.value.
+                                    }}
+                                    //onLoad = {this.onDescriptionChanged}
+                                    //onBlur = {this.saveChanges}
+                                >
+                                </textarea>
+                            </div>
 
                             <TaskList data = {this.state.tasks} type = 'full'/>
                         </div>
@@ -87,7 +123,7 @@ class Project extends React.Component{
                 </div>
             )                       
                     
-                    
+     
             // compact
             default: return( 
                 <div onClick = {() => {
@@ -101,9 +137,6 @@ class Project extends React.Component{
                     <TaskList data = {this.state.tasks} type = 'compact'/>
                 </div>
             )
-
-
-
         }
     }
 }
