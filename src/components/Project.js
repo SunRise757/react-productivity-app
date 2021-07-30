@@ -3,6 +3,7 @@ import TaskList from './TaskList.js'
 import React from 'react';
 import Border from './Border.js'
 import * as Data from '../Data/Data.js'
+import TimeLeft from './TimeLeft.js'
 
 class Project extends React.Component{
     constructor(props){
@@ -30,12 +31,10 @@ class Project extends React.Component{
     }
 
     saveChanges = () => {
-        //TODO save changes through Data.js after editing
-        console.log('saving changes.... (not working yet)');
         Data.setProject(
             this.props.data[0],
             this.state
-            )
+        )
     }
 
     onNameChanged = (e) => {
@@ -43,15 +42,9 @@ class Project extends React.Component{
             name: e.target.value,
         })
     }
-    //autochange heigth
+    //autochange heigth & change the thing
     onDescriptionChanged = (e) => {
-        // console.log('scroll heigth = ' + e.target.rows)
-        // let k = e.target.scrollHeight/20;
-        // this.setState({
-        //     description: e.target.value,
-        //     descriptionRows: k,
-        // })
-        const textareaLineHeight = 20;
+        const textareaLineHeight = 24;
 		const { minRows, maxRows } = this.state;
 		
 		const previousRows = e.target.rows;
@@ -74,6 +67,19 @@ class Project extends React.Component{
         });
     }
 
+    addTask = () => {
+        let tasks = this.state.tasks;
+        tasks.push({
+            complete: true,
+            name: "Task Name 1",
+            date: "Date 1",
+        },);
+
+        this.setState({
+            tasks: tasks, 
+        });
+    }
+
     render(){
         //console.log(this.state.tasks);
         switch(this.state.visibility){ 
@@ -86,7 +92,7 @@ class Project extends React.Component{
                                 this.saveChanges();
                         }
                     }
-                    >
+                >
                     <Border content = {
                         //full project comp itself
                         <div className = "Project-full">
@@ -98,9 +104,10 @@ class Project extends React.Component{
                             >
                             </input></h5>
                             
-                            <h6>{this.state.teamName}</h6>
-                            <p className = 'timeLeft'>{this.state.timeLeft} </p>
-                            <input type = 'date'></input>
+                            {/*<h6>{this.state.teamName}</h6>*/}
+                            {/*<p className = 'timeLeft'>{this.state.timeLeft} </p>*/}
+                            <TimeLeft date = {this.state.timeLeft}></TimeLeft>
+                            {/*<input type = 'date'></input>*/}
                             <div className = 'Project-description'>
                                 <textarea 
                                     rows = {this.state.descriptionRows? this.state.descriptionRows : 5}
@@ -132,7 +139,7 @@ class Project extends React.Component{
                 }}
                 className = "Project-compact">
                     <h5>{this.state.name}</h5>
-                    <h6>{this.state.teamName}</h6>
+                    {/*<h6>{this.state.teamName}</h6>*/}
                     <p className = 'timeLeft'>{this.state.timeLeft} </p>
                     <TaskList data = {this.state.tasks} type = 'compact'/>
                 </div>

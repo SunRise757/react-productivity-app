@@ -25,6 +25,7 @@ class Dashboard extends React.Component{
     }
     
     render(){
+        /*
         const projectData = {
             name: 'Project Name',
             teamName: 'Team Name',
@@ -33,10 +34,11 @@ class Dashboard extends React.Component{
             tasks: 'Tasks',
             comments: 'Comments',
         }
-
+        */
+        
         return (
             <div className = 'Dashboard'>
-                <h1 className = 'WindowTitle'> Dashboard </h1>
+                <h1 className = 'WindowTitle'> Projects </h1>
                 <Border content = {
                     <div className = 'Borders'>
                         {/*
@@ -57,7 +59,11 @@ class Dashboard extends React.Component{
 
                         {this.renderProjects()}
                         
-                        <Border content = "Border" type = 'dashed'></Border>
+                        <Border content = {
+                            <div className = 'AddProject'>
+                                <button className = 'AddProject'><label className = 'AddProject'>+</label></button>
+                            </div>
+                        } type = 'dashed'></Border>
                     </div>
                     } 
                     type = 'screen'>

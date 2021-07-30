@@ -4,6 +4,10 @@
   /* height: 100%; */
   width: 100%;
   
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+
   display: flex;
 
   font-size: calc(10px + 2vmin);
@@ -12,6 +16,9 @@
 
 h1.WindowTitle{
   margin-top: 0px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+  padding:0px;
 }
 h5{
   margin:0px;
@@ -22,7 +29,7 @@ h6{
   padding:0px;
   color:grey;
 }
-p.timeLeft{
+.timeLeft{
   margin:0px;
   padding:3px;
   padding-right: 5px;
@@ -34,7 +41,7 @@ p.timeLeft{
   background-color: pink;
   color:red;
 }
-p.timeLeft::before{
+.timeLeft::before{
   content: "⏱"
 }
 .progress-bar{
@@ -68,6 +75,7 @@ p.timeLeft::before{
 
   margin: 10px;
   border-radius: 15px;
+  /* padding: 15px; */
 }
 
 .Border-regular{
@@ -105,6 +113,8 @@ p.timeLeft::before{
 .Project-compact{
   width: stretch;
   height: stretch;
+  padding: 12px;
+  padding-top: 7px;
 }
 .Project-full{
   width: stretch;
@@ -128,17 +138,14 @@ p.timeLeft::before{
 }
 
 .Project-description{
-  /* border-style: none; */
-  width: stretch;
-  /* height: fit-content;*/
-  /* height: stretch; */
-  /* min-height: 100px; */
-  /* resize: vertical; */
-  resize: none;
-  height: fit-content;
   overflow: visible;
-  line-height: 20px;
+  resize: none;
+  width: stretch;
+  height: fit-content;
+  line-height: 24px;
+  
   font-size: 20px;
+  font-family: inherit;
 
   border-style: none;
 }
@@ -146,5 +153,40 @@ p.timeLeft::before{
 .Project-name{
   font-size: 24px;
   border-style: none;
+  width: 100%;
   /* font-family: Tahoma;  */
+}
+
+.Task-name{
+  font-size: 20px;
+  border-style: none;
+  margin-right: 5px;
+  align-self: flex-start;
+  /* width: calc(100%-50px); */
+  width: 100%;
+  /* width:max-content;  */
+}
+.task{
+  vertical-align: middle;
+  display: inline-block;
+  align-self:flex-start;
+} 
+.Task-name-div{
+  display:inline-flex
+}
+
+div.AddProject{
+  height: 100%;
+  align-items: center;
+}
+
+button.AddProject{
+  
+}
+
+label.AddProject{
+  font-size: 60px;
+  align-self: center;
+  vertical-align: middle;
+  text-align: center;
 }

@@ -68,12 +68,71 @@ class TaskList extends React.Component{
         );
     }
 
+    handleNameChange = (e, i) => {
+        let newTasks = this.state.tasks;
+        newTasks[i].name = e.target.value;
+
+        this.setState(
+            {
+                tasks: newTasks,
+            }
+        );
+    }
+
+    addTask = () => {
+        let newTasks = this.state.tasks;
+        newTasks.push({
+            complete: false,
+            name: "New task",
+            date: "Date 1",
+        },)
+
+        this.setState(
+            {
+                tasks: newTasks,
+                persent: this.calculatePersent(newTasks),
+            }
+        );
+    }
+
+    deleteTask = (i) => {
+        //console.log(i)
+        let newTasks = this.state.tasks;
+        newTasks.splice(i, 1);
+
+        this.setState({
+            tasks: newTasks,
+            persent: this.calculatePersent(newTasks),
+        })
+    }
+
+    onTaskDateChange = (e, i) => {
+        console.log('i = ' + i + 'e = ' + e.target.value);
+
+        let newTasks = this.state.tasks;
+        newTasks[i].date = e.target.value;
+
+        console.log(JSON.stringify(newTasks));
+
+        this.setState({
+            tasks: newTasks,
+        })
+    }
+
     renderTasks = () => {
         return(
             this.state.tasks.map(
                 (taskData, i) => {
                     //console.log(i);
-                    return <Task data = {taskData} key = {i} onChange = {() => this.updatePersent(i)}></Task>        
+                    return <Task 
+                        data = {taskData} 
+                        key = {i} 
+                        onComplete = {() => this.updatePersent(i)}
+                        onNameChange = {(e) => this.handleNameChange(e, i)}
+                        onDelete = {() => {this.deleteTask(i)}}
+                        onDateChange = {(e) => {this.onTaskDateChange(e, i)}}
+                    >
+                    </Task>        
                 }
             )
         )
@@ -85,16 +144,17 @@ class TaskList extends React.Component{
         if(this.props.type && this.props.type !== "compact"){
             return(
                 <div>
-                    
                     <div className="progress-bar">
                         <div className = "progress-bar-fill" 
                             style = {{width: persent}}>
                         </div>
                     </div>
                     {this.renderTasks()}
+                    <button onClick = {this.addTask}>+</button>
                 </div> 
             )
-        } else {return( // if compact
+        } else {
+            return( // if compact
                 <div>
                     <div className="progress-bar">
                         <div className = "progress-bar-fill" 
