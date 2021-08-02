@@ -32,14 +32,14 @@ h6{
 .timeLeft{
   margin:0px;
   padding:3px;
-  padding-right: 5px;
+  padding-right: 20px;
   padding-top: 0px;
   width:fit-content;
   
   font-size: 16px;
   
-  background-color: pink;
-  color:red;
+  /* background-color: pink; */
+  /* color:red; */
 }
 .timeLeft::before{
   content: "⏱"
@@ -87,7 +87,6 @@ h6{
 
 .Border-dashed{
   border: 2px dashed grey;
-
   color: black;
 }
 
@@ -162,17 +161,17 @@ h6{
   border-style: none;
   margin-right: 5px;
   align-self: flex-start;
-  /* width: calc(100%-50px); */
   width: 100%;
-  /* width:max-content;  */
 }
 .task{
   vertical-align: middle;
   display: inline-block;
-  align-self:flex-start;
 } 
-.Task-name-div{
-  display:inline-flex
+
+
+.Task-name-div-right{
+  float:inline-end;
+  display:inline-flex;
 }
 
 div.AddProject{
@@ -181,7 +180,10 @@ div.AddProject{
 }
 
 button.AddProject{
-  
+  width: stretch;
+  height: stretch;
+  background-color: transparent;
+  border: none;
 }
 
 label.AddProject{
@@ -189,4 +191,22 @@ label.AddProject{
   align-self: center;
   vertical-align: middle;
   text-align: center;
+}
+
+input[type="date"]::-webkit-datetime-edit,
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  visibility:hidden;
+  width: 0px;
+}
+
+input[type="date"].dateLeftInput{
+  transform: translate(-100%);
+  box-sizing: border-box;
+  margin-right: -140px;
+  border-color: transparent;
+  color:transparent;
+  background-color: transparent;  
+}
+input[type="date"].dateLeftInput:focus{
+  outline: none;
 }

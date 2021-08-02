@@ -10,10 +10,13 @@ class Task extends React.Component{
             <div className = 'tasks'>
                 <button onClick = {this.props.onDelete}>x</button>
                 <spacer> </spacer>
-                {/*<label className = 'timeLeft'>{this.props.data.date} </label>   */}
-                <TimeLeft date = {this.props.data.date} onChange = {this.props.onDateChange}></TimeLeft>
+                <TimeLeft 
+                    date = {this.props.data.date} 
+                    onChange = {this.props.onDateChange}
+                    complete = {this.props.data.complete}></TimeLeft>
                 <input type="checkbox" checked = {this.props.data.complete} onChange = {this.props.onComplete}/>
-                <div className = 'Task-name-div'>
+                
+                <div className = 'Task-name-div-right'>
                     <input 
                     type = 'text'
                     className = 'Task-name'
@@ -27,17 +30,7 @@ class Task extends React.Component{
                     }
                     >
                     </input>
-
-                
-                {/*<label style = {
-                     this.props.data.complete ?
-                     {
-                         'textDecoration': 'line-through',
-                     }:{}
-                 }>
-                 </label>
-                */}        
-                </div>     
+                </div>    
             </div>
         )
     }

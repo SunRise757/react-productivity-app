@@ -16,22 +16,12 @@ class TaskList extends React.Component{
             this.state = {
                 tasks: [
                     {
-                        complete: true,
-                        name: "Task Name 1",
+                        complete: false,
+                        name: "Task 1",
                         date: "Date 1",
-                    },
-                    {
-                        complete: false,
-                        name: "Task Name 2",
-                        date: "Date 2",
-                    },
-                    {
-                        complete: false,
-                        name: "Task Name 3",
-                        date: "Date 3",
                     }
                 ],
-                persent: "10%",
+                persent: "0%",
             }
 
         }
@@ -107,7 +97,7 @@ class TaskList extends React.Component{
     }
 
     onTaskDateChange = (e, i) => {
-        console.log('i = ' + i + 'e = ' + e.target.value);
+        //console.log('i = ' + i + 'e = ' + e.target.value);
 
         let newTasks = this.state.tasks;
         newTasks[i].date = e.target.value;

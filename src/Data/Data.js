@@ -8,91 +8,11 @@ export const getAllProjects = () => {
         projectKeys[i][1] = JSON.parse(projectKeys[i][1]);
     }
 
+    projectKeys = projectKeys.sort();
+
     return projectKeys;
-    //return projectsArray;
-    /*
-    return(
-        [
-            {
-                name: "PROJECT 0",
-                teamName: "props.data.teamName",
-                status: "pending",
-                timeLeft: "props.data.timeLeft",
-                description: "props.data.description",
-                tasks: [
-                    {
-                        complete: true,
-                        name: "Task Name 1",
-                        date: "Date 1",
-                    },
-                    {
-                        complete: false,
-                        name: "Task Name 2",
-                        date: "Date 2",
-                    },
-                    {
-                        complete: false,
-                        name: "Task Name 3",
-                        date: "Date 3",
-                    }
-                ],
-                comments: "props.data.comments",
-            },
-            {
-                name: "PROJECT 1",
-                teamName: "props.data.teamName",
-                status: "pending",
-                timeLeft: "props.data.timeLeft",
-                description: "props.data.description",
-                tasks: [
-                    {
-                        complete: true,
-                        name: "Task Name 1",
-                        date: "Date 1",
-                    },
-                    {
-                        complete: false,
-                        
-                        name: "Task Name 2",
-                        date: "Date 2",
-                    },
-                    {
-                        complete: false,
-                        name: "Task Name 3",
-                        date: "Date 3",
-                    }
-                ],
-                comments: "props.data.comments",
-            },
-            {
-                name: "PROJECT 2",
-                teamName: "props.data.teamName",
-                status: "pending",
-                timeLeft: "props.data.timeLeft",
-                description: "props.data.description",
-                tasks: [
-                    {
-                        complete: true,
-                        name: "Task Name 1",
-                        date: "Date 1",
-                    },
-                    {
-                        complete: false,
-                        name: "Task Name 2",
-                        date: "Date 2",
-                    },
-                    {
-                        complete: false,
-                        name: "Task Name 3",
-                        date: "Date 3",
-                    }
-                ],
-                comments: "props.data.comments",
-            },
-        ]
-    )*/
 }
-//works only for 1 deep field
+
 export const setFieldInProject = (projectKey, field, value) => {
     let item = JSON.parse(localStorage.getItem(projectKey));
     item[field] = value;
@@ -103,8 +23,39 @@ export const setProject = (projectKey, value) => {
     localStorage.setItem(projectKey, JSON.stringify(value));
 }
 
-
-/*
-const changeData = () => {
+export const addProject = () => {
+    var projectKeys = Object.entries(localStorage);
+    projectKeys = projectKeys.sort();
+    
+    let newKey = 1;
+    if(projectKeys[projectKeys.length-1])
+        newKey = projectKeys[projectKeys.length-1][0];
+    while(localStorage.getItem(newKey))
+        newKey++;
+    console.log(newKey);
+    let newProject = {
+        name: "New project",
+        teamName: "New team",
+        status: "pending",
+        timeLeft: "props.data.timeLeft",
+        description: "Project description",
+        tasks: [
+            {
+                complete: false,
+                name: "Task 1",
+                date: "Date 1",
+            }
+        ],
+        comments: "props.data.comments",
+    };
+    setProject(newKey, newProject);
 }
-*/
+
+export const doesProjectExist = (key) => {
+    if(localStorage.getItem(key)) return true;
+    return false
+}
+
+export const deleteProject = (key) => {
+    localStorage.removeItem(key);
+}

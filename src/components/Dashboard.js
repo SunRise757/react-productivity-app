@@ -5,11 +5,19 @@ import Project from './Project.js';
 import * as Data from '../Data/Data.js'
 
 class Dashboard extends React.Component{   
-    renderProjects = () => {
-        return (Data.getAllProjects().map((data, i)=>{
+    constructor(props){
+        super(props);
+
+        this.state = {
+            projects: Data.getAllProjects()
+        }
+    }
+    
+    renderProjects = (projects) => {
+        return (projects.map((data, i)=>{
             return(
-                <Border key = {i} content = {
-                    <Project data = {data}/>
+                <Border key = {data[0] /*0*/} content = {
+                    <Project data = {data} onDeleted = {() => {this.setState({projects: Data.getAllProjects()})}}/>
                 } type = 'regular'></Border>
             )
         }));
@@ -24,6 +32,13 @@ class Dashboard extends React.Component{
         // }));
     }
     
+    addProject = () => {
+        Data.addProject();
+        this.setState({
+            projects: Data.getAllProjects()
+        });
+    }
+
     render(){
         /*
         const projectData = {
@@ -57,11 +72,11 @@ class Dashboard extends React.Component{
                             } type = 'regular'></Border>
                         */}
 
-                        {this.renderProjects()}
+                        {this.renderProjects(this.state.projects)}
                         
                         <Border content = {
                             <div className = 'AddProject'>
-                                <button className = 'AddProject'><label className = 'AddProject'>+</label></button>
+                                <button className = 'AddProject' onClick = {this.addProject}><label className = 'AddProject'>+</label></button>
                             </div>
                         } type = 'dashed'></Border>
                     </div>

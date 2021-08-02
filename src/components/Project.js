@@ -9,12 +9,25 @@ class Project extends React.Component{
     constructor(props){
         super(props)
         if(props.data)
-        this.state = {
+            this.state = {
+                //key: props.data[0],
+                name: props.data[1].name,
+                teamName: props.data[1].teamName,
+                timeLeft: props.data[1].timeLeft,
+                description: props.data[1].description,
+                tasks: props.data[1].tasks,
+                comments: props.data[1].comments,
+                visibility: props.type,
+                minRows: 5, 
+                maxRows: 15,
+                //descriptionRows: props.data[1].descriptionRows ? props.data[1].descriptionRows : 5.
+            }; 
+        else this.state = {
             //key: props.data[0],
-            name: props.data[1].name,
-            teamName: props.data[1].teamName,
+            name: 'New project',
+            teamName: 'New team',
             timeLeft: props.data[1].timeLeft,
-            description: props.data[1].description,
+            description: 'Project description',
             tasks: props.data[1].tasks,
             comments: props.data[1].comments,
             visibility: props.type,
@@ -31,6 +44,7 @@ class Project extends React.Component{
     }
 
     saveChanges = () => {
+        if(Data.doesProjectExist(this.props.data[0]))
         Data.setProject(
             this.props.data[0],
             this.state
@@ -80,6 +94,13 @@ class Project extends React.Component{
         });
     }
 
+    onDateChange = (e) => {
+
+        this.setState({
+            timeLeft: e.target.value, 
+        });
+    }
+
     render(){
         //console.log(this.state.tasks);
         switch(this.state.visibility){ 
@@ -105,8 +126,11 @@ class Project extends React.Component{
                             </input></h5>
                             
                             {/*<h6>{this.state.teamName}</h6>*/}
-                            {/*<p className = 'timeLeft'>{this.state.timeLeft} </p>*/}
-                            <TimeLeft date = {this.state.timeLeft}></TimeLeft>
+                            
+                            <TimeLeft 
+                                date = {this.state.timeLeft} 
+                                onChange = {this.onDateChange}
+                                complete = {this.props.data.complete}></TimeLeft>
                             {/*<input type = 'date'></input>*/}
                             <div className = 'Project-description'>
                                 <textarea 
@@ -124,6 +148,10 @@ class Project extends React.Component{
                             </div>
 
                             <TaskList data = {this.state.tasks} type = 'full'/>
+                            <button onClick = {() => {
+                                Data.deleteProject(this.props.data[0]);
+                                this.props.onDeleted();
+                            }}>Delete project</button>
                         </div>
                         //
                     } type = 'overlay'></Border>
@@ -140,7 +168,10 @@ class Project extends React.Component{
                 className = "Project-compact">
                     <h5>{this.state.name}</h5>
                     {/*<h6>{this.state.teamName}</h6>*/}
-                    <p className = 'timeLeft'>{this.state.timeLeft} </p>
+                    <TimeLeft 
+                                date = {this.state.timeLeft} 
+                                onChange = {this.onDateChange}
+                                complete = {this.props.data.complete}></TimeLeft>
                     <TaskList data = {this.state.tasks} type = 'compact'/>
                 </div>
             )
