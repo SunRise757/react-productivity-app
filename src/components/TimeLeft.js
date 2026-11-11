@@ -7,7 +7,7 @@ class TimeLeft extends React.Component{
         let dueDate = new Date(this.props.date);
         let curDate = new Date();
         var diff =  Math.ceil(( dueDate - curDate ) / 86400000); 
-        var color = 'lightgray';
+        var color = 'gray';
         var textColor = 'white';
 
         if(diff < 2){
@@ -26,7 +26,8 @@ class TimeLeft extends React.Component{
         
 
         console.log(this.props.date)
-        if(this.props.compact)
+        if (false)
+        //if(this.props.compact)
             return(
                 <div className = 'task'>
                     <label className = 'timeLeft'

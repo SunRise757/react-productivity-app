@@ -35,7 +35,6 @@ h6{
   padding-right: 20px;
   padding-top: 0px;
   width:fit-content;
-  
   font-size: 16px;
   
   /* background-color: pink; */
@@ -164,13 +163,15 @@ h6{
   width: 100%;
 }
 .task{
+  min-width: 15%;
+  width: fit-content;
   vertical-align: middle;
   display: inline-block;
 } 
 
 
 .Task-name-div-right{
-  float:inline-end;
+  float:inline;
   display:inline-flex;
 }
 
@@ -202,7 +203,7 @@ input[type="date"]::-webkit-datetime-edit-fields-wrapper {
 input[type="date"].dateLeftInput{
   transform: translate(-100%);
   box-sizing: border-box;
-  margin-right: -140px;
+  margin-right: -100px;
   border-color: transparent;
   color:transparent;
   background-color: transparent;  
