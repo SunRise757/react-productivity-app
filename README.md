@@ -1,6 +1,8 @@
-#React Productivity App
+# React Productivity App
 
 A university project productivity to-do list application built with React class components, featuring multiple projects with subtasks and due date tracking. All data is automatically saved to browser's LocalStorage without requiring a backend server.
+
+![App screenshot](screenshots/Projects%20dashboard.png)
 
 ## Features
 
@@ -12,9 +14,7 @@ A university project productivity to-do list application built with React class 
 - **Interactive UI**: Editable fields for task project names, descriptions, dates and individual tasks
 - **Persistent Storage**: All data automatically saved to browser's LocalStorage
 
-![App screenshot](screenshots/Projects dashboard.png)
-![App screenshot](screenshots/Project and subtasks.png)
-
+![App screenshot](screenshots/Project%20and%20subtasks.png)
 ## Technologies Used
 
 - **React 17.0.2** - Frontend JavaScript library
